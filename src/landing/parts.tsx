@@ -84,14 +84,18 @@ export function Band({ id, label, tone, className, children }: { id?: string; la
 }
 
 /** The heading row that opens a section: a narrow numbered label cell beside the title cell. */
-export function SectionHead({ n, label, id, title, lede }: { n: string; label: string; id: string; title: ReactNode; lede?: ReactNode }) {
+export function SectionHead({
+  n, label, id, title, lede, action, level = 2,
+}: { n: string; label: string; id: string; title: ReactNode; lede?: ReactNode; action?: ReactNode; level?: 2 | 3 }) {
+  const H = level === 2 ? 'h2' : 'h3'
   return (
     <>
       <Reveal className="lp-cell lp-head-label"><SectionLabel n={n}>{label}</SectionLabel></Reveal>
       <Reveal className="lp-cell lp-head-title" delay={1}>
         <div className="lp-head-in">
-          <h2 id={id} className="lp-h2">{title}</h2>
+          <H id={id} className="lp-h2">{title}</H>
           {lede && <p className="lp-lede">{lede}</p>}
+          {action && <div className="lp-head-action">{action}</div>}
         </div>
       </Reveal>
     </>

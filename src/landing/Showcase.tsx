@@ -1,5 +1,5 @@
 /*
- * "Your trip, mapped out" — the real sample itinerary with day and map/list controls.
+ * Part of the sample-trip demo: the real Bangkok sample itinerary with day and map/list controls.
  * Purely local view state; the person's own trips are never read or changed.
  */
 import { Clock, Footprints, CarTaxiFront, List, Map as MapIcon, Wallet } from 'lucide-react'
@@ -33,9 +33,9 @@ export function Showcase() {
     <Band id="planner" label="planner-title" className="lp-showcase">
       <Reveal className="lp-cell lp-showcase-copy">
         <div>
-          <SectionLabel n="02">The planner</SectionLabel>
-          <h2 id="planner-title" className="lp-h2">Your trip, mapped out.</h2>
-          <p className="lp-lede">Every stop in order, with travel, timings and rough costs.</p>
+          <SectionLabel n="A">Sample · Itinerary</SectionLabel>
+          <h3 id="planner-title" className="lp-h2 lp-h2-sub">Your trip, mapped out.</h3>
+          <p className="lp-lede">Every stop in order, with travel, timings and rough costs. Pick a day, then switch between map and list.</p>
           <div className="lp-why" aria-live="polite">
             <p className="lp-h4">Day {day + 1} · sample estimates</p>
             <p className="lp-why-title">{note.title}</p>

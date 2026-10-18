@@ -1,5 +1,5 @@
 /*
- * "Change the plan. Keep the adventure." — the app's rule-based adjustments, run on a local
+ * Part of the sample-trip demo: the app's rule-based (simulated AI) adjustments, run on a local
  * copy of the Bangkok sample. Apply / Undo / Reset only touch this component's state.
  */
 import { ArrowRight, Check, CircleCheck, Lock, RotateCcw, Shuffle, Undo2 } from 'lucide-react'
@@ -68,11 +68,12 @@ export function AdjustDemo() {
   return (
     <Band id="adjust" label="adjust-title" tone="blue" className="lp-adjust">
       <SectionHead
-        n="03"
-        label="Adjust with AI"
+        n="B"
+        label="Sample · Adjust"
         id="adjust-title"
+        level={3}
         title="Change the plan. Keep the adventure."
-        lede="Ask for a change, then review exactly what moves before you apply it."
+        lede="Ask for a change to the Bangkok sample, then review exactly what moves before you apply it. Suggestions are simulated with simple rules, not a live AI model."
       />
 
       <Reveal className="lp-cell lp-adjust-controls">
