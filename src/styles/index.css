@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 8px;
+}
+
+/* The centred app column on desktop; full width on phones. */
+/* Headings focused programmatically on navigation don't need a ring. */
+[tabindex="-1"]:focus-visible {
+  box-shadow: none;
+}
+
+.app-shell {
+  max-width: var(--app-max-width);
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+  background: var(--color-canvas);
+}
+@media (min-width: 640px) {
+  .app-shell {
+    box-shadow: 0 0 0 1px var(--color-line);
+  }
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+/* Space reserved under scroll content so fixed bars never cover it. */
+.pb-nav {
+  padding-bottom: calc(var(--nav-offset) + env(safe-area-inset-bottom) + 28px);
+}
+.pb-action {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+.pb-nav-action {
+  padding-bottom: calc(var(--nav-offset) + 96px + env(safe-area-inset-bottom));
+}
+
+.fixed-column {
+  position: fixed;
+  left: 50%;
+  translate: -50% 0;
+  width: 100%;
+  max-width: var(--app-max-width);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes sheet-in {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.anim-sheet { animation: sheet-in 200ms ease-out; }
+.anim-fade { animation: fade-in 160ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Roam editorial refinement: shared rhythm, individual screen personalities. */
+:root { --app-max-width: 390px; }
+main { scrollbar-width: none; }
+main::-webkit-scrollbar { display: none; }
+.device-status, .device-home { display: none; }
+.hero-eyebrow,.chapter-label { display:block; font-size:10px; font-weight:800; letter-spacing:.13em; line-height:1.6; }
+.hero-eyebrow { color:var(--color-lime); margin-bottom:9px; }
+.discovery-hero { padding-top:20px; padding-bottom:18px; }
+.discovery-hero h1 { font-size:30px; line-height:1.12; letter-spacing:-1.2px; max-width:13ch; }
+.discovery-hero .hero-collage { height:158px; margin-top:16px; }
+.hero-collage > img:first-child { height:154px; width:65%; }
+.hero-collage > img:nth-child(2) { height:80px; }
+.hero-collage > img:nth-child(3) { height:75px; }
+.discovery-hero .hero-collage + div { margin-top:14px; }
+.discovery-hero .hero-collage + div > p { font-size:11px; line-height:16px; }
+[data-screen="discover"] main > div > div.mt-3 { gap:22px; }
+.screen-topbar { padding-top:12px; }
+.screen-topbar h1 { letter-spacing:-.035em; }
+[data-screen="itinerary"] .screen-topbar { background:var(--color-primary); color:white; padding-bottom:22px; border-radius:0 0 28px 28px; }
+[data-screen="itinerary"] .screen-topbar p,[data-screen="itinerary"] .screen-topbar button { color:white; }
+[data-screen="itinerary"] [role="tablist"] { gap:8px; }
+[data-screen="itinerary"] [role="tab"][aria-selected="true"] { background:var(--color-ink); border-color:var(--color-ink); color:var(--color-lime); }
+.adjust-intro { padding:22px; border-radius:24px; background:var(--color-primary); color:white; position:relative; overflow:hidden; }
+.adjust-intro::after { content:'✳'; position:absolute; right:-6px; top:-27px; font-size:110px; color:var(--color-lime); opacity:.25; pointer-events:none; }
+.adjust-intro h1 { position:relative; font-size:30px; line-height:1.15; margin-top:16px; max-width:9ch; z-index:1; }
+.adjust-intro p { color:#eef1ff; font-size:13px; line-height:20px; }
+.adjust-intro .chapter-label { color:var(--color-lime); font-size:9px; }
+.adjust-choices button:nth-child(1) { background:#ece8fd; }
+.adjust-choices button:nth-child(2) { background:#eaf2d6; }
+.adjust-choices button:nth-child(3) { background:#ffead9; }
+.adjust-choices button:nth-child(4) { background:#e4edff; }
+.adjust-choices button[aria-pressed="true"] { background:var(--color-lime); }
+.saved-editorial,.trip-editorial,.profile-editorial,.brief-editorial,.overview-editorial { padding:23px; border-radius:24px; position:relative; overflow:hidden; }
+.saved-editorial h2,.trip-editorial h2,.profile-editorial h2,.brief-editorial h2,.overview-editorial h2 { font-size:28px; line-height:1.12; font-weight:800; letter-spacing:-1px; margin:15px 0 12px; position:relative; z-index:1; }
+.saved-editorial p,.trip-editorial p,.profile-editorial p,.brief-editorial p { font-size:12px; line-height:18px; position:relative; z-index:1; }
+.saved-editorial { background:#ece8fd; min-height:210px; padding-right:110px; }
+.saved-editorial .chapter-label { max-width:140px; font-size:9px; }
+.saved-editorial img { position:absolute; right:-13px; top:42px; width:115px; height:145px; object-fit:cover; border:5px solid white; border-radius:15px; transform:rotate(11deg); }
+.trip-editorial { background:var(--color-lime); }
+.compass-mark { position:absolute; font-size:140px; right:10px; top:4px; color:#657e16; line-height:1; }
+.profile-editorial { background:var(--color-ink); color:white; }
+.profile-editorial .chapter-label { color:var(--color-lime); }
+.brief-editorial { background:#e8edff; margin-top:10px; }
+.brief-editorial::after { content:'↗'; position:absolute; right:18px; top:30px; font-size:110px; line-height:1; color:var(--color-primary); }
+.overview-editorial { background:var(--color-primary); color:white; padding-right:115px; }
+.overview-editorial img { position:absolute; height:100%; width:110px; object-fit:cover; right:0; top:0; }
+.overview-editorial .chapter-label { font-size:9px; color:var(--color-lime); }
+@media (min-width:640px) {
+ html,body { background:#e9eae5; }
+ body { padding:30px 0; }
+ .app-shell { width:390px; height:844px; min-height:0; max-width:none; box-sizing:content-box; border:10px solid #17191c; border-radius:53px; overflow:hidden; transform:translateZ(0); box-shadow:0 0 0 2px #6c6e70,0 0 0 4px #c5c6c2,0 28px 65px #191c252b; }
+ .device-status { display:flex; height:47px; align-items:center; justify-content:space-between; padding:0 24px; font-size:14px; font-weight:800; position:relative; z-index:60; background:var(--color-canvas); }
+ .device-notch { position:absolute; width:160px; height:28px; top:0; left:50%; transform:translateX(-50%); border-radius:0 0 20px 20px; background:#17191c; }
+ .device-signal { display:flex; align-items:center; gap:4px; }
+ .app-shell > main { height:calc(100% - 47px); overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; padding-bottom:23px; }
+ .device-home { display:block; position:absolute; bottom:8px; width:128px; height:5px; border-radius:8px; background:#17191c; left:50%; transform:translateX(-50%); z-index:60; pointer-events:none; }
+ .app-shell > nav { bottom:24px !important; }
+ .app-shell .fixed-column { max-width:390px; }
+ .app-shell [role="dialog"] { max-height:calc(100% - 58px) !important; }
+ .app-shell:has([role="dialog"]) > main { overflow:hidden; }
+ .app-shell [role="dialog"] { padding-bottom:20px; }
+}
+@media (min-width:640px) and (max-height:920px) { .app-shell { zoom:.84; } }
+@media (max-width:639px) { .app-shell { width:100%; max-width:430px; } }
+[data-screen="itinerary"] .screen-topbar .text-ink-muted { color:#eef1ff; }
+@media (min-width:640px) {
+ .app-shell > main > div > .fixed-column.z-30 { padding-bottom:26px !important; }
+ .app-shell > main > div > .fixed-column.z-30[style*="nav-offset"] { padding-bottom:12px !important; margin-bottom:18px; }
+}

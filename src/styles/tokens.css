@@ -1,0 +1,115 @@
+/*
+ * Roam — central visual tokens.
+ *
+ * Every colour, type size, spacing step, radius and shadow used by the UI is
+ * defined here. Tailwind v4 turns each `--color-*`, `--radius-*`, `--shadow-*`,
+ * `--text-*` and `--font-*` variable into utilities (e.g. `bg-surface`,
+ * `text-ink-muted`, `rounded-card`). Swap values here to restyle the app.
+ *
+ * Direction: light canvas, white surfaces, near-black ink, electric blue as the
+ * primary action colour, lime for selection / positive change (always paired
+ * with text or an icon), pale lavender as a small supporting surface.
+ */
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/manrope-latin-wght.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Fonts */
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Surfaces */
+  --color-canvas: #f7f7f2;          /* soft off-white app background */
+  --color-surface: #ffffff;         /* cards, sheets */
+  --color-surface-sunken: #efefe9;  /* inset areas, quiet controls */
+  --color-line: #e4e4dc;            /* hairlines and borders */
+  --color-line-strong: #c9c9c0;
+
+  /* Text */
+  --color-ink: #17191c;
+  --color-ink-muted: #4d525a;       /* 7.9:1 on canvas */
+  --color-ink-subtle: #61666e;      /* 5.6:1 on canvas */
+  --color-ink-inverse: #ffffff;
+
+  /* Primary — electric blue */
+  --color-primary: #2457ff;
+  --color-primary-hover: #1a46e0;
+  --color-primary-soft: #e7edff;
+  --color-primary-ink: #1739b8;     /* blue text on light surfaces */
+  --color-primary-deep: #1b44d6;    /* panel shade for depth inside blue areas */
+
+  /* Lime — selection and positive change; always with ink text */
+  --color-lime: #d9f66f;
+  --color-lime-soft: #f1fccb;
+  --color-lime-ink: #3d4d00;
+
+  /* Lavender — supporting surface; violet ink for must-visit markers */
+  --color-accent: #6a4ee0;
+  --color-accent-soft: #ece8fd;
+  --color-accent-ink: #4a32b0;
+
+  /* Status */
+  --color-success: #23733f;
+  --color-success-soft: #e3f3e8;
+  --color-warning: #855400;
+  --color-warning-soft: #fcf1d8;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdecea;
+  --color-info: #2457ff;
+  --color-info-soft: #e7edff;
+
+  /* Map (light, quiet) */
+  --color-map-land: #f2f3ee;
+  --color-map-district: #e8eae1;
+  --color-map-park: #e2ecd6;
+  --color-map-road: #ffffff;
+  --color-map-water: #d6e4ef;
+  --color-map-route: #2457ff;
+  --color-map-label: #6f747b;
+
+  /* Type scale — editorial 32, section 20, body 15, meta 12–13 */
+  --text-display: 2rem;
+  --text-display--line-height: 2.375rem;
+  --text-display--letter-spacing: -0.025em;
+  --text-title: 1.25rem;
+  --text-title--line-height: 1.625rem;
+  --text-title--letter-spacing: -0.01em;
+  --text-heading: 1.0625rem;
+  --text-heading--line-height: 1.375rem;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.375rem;
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.125rem;
+  --text-micro: 0.75rem;
+  --text-micro--line-height: 1rem;
+
+  /* Radii */
+  --radius-chip: 999px;
+  --radius-control: 12px;
+  --radius-tile: 16px;
+  --radius-card: 22px;
+  --radius-sheet: 28px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgb(23 25 28 / 0.05), 0 1px 1px rgb(23 25 28 / 0.03);
+  --shadow-raised: 0 8px 24px rgb(23 25 28 / 0.10);
+  --shadow-float: 0 10px 30px rgb(23 25 28 / 0.12), 0 2px 6px rgb(23 25 28 / 0.06);
+  --shadow-sheet: 0 -8px 30px rgb(23 25 28 / 0.14);
+
+  /* Spacing base (Tailwind multiplies this: p-4 = 4 × 0.25rem) */
+  --spacing: 0.25rem;
+}
+
+:root {
+  /* Layout tokens (not Tailwind utilities) */
+  --app-max-width: 430px;
+  --gutter: 20px;
+  --nav-height: 64px;
+  /* Floating nav: bar height + gap below it. */
+  --nav-offset: calc(var(--nav-height) + 12px);
+  --focus-ring: 0 0 0 3px rgb(36 87 255 / 0.45);
+}
